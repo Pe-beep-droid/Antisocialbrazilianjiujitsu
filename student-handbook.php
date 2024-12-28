@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Handbook</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+            position: relative;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: inline-block;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+        main {
+            padding: 2rem;
+            background-color: #fff;
+            margin: 2rem auto;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .language-switch {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+        }
+        .collapsible {
+            background-color: #333;
+            color: white;
+            cursor: pointer;
+            padding: 10px;
+            width: 100%;
+            border: 1px solid black;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+            margin-top: 1rem;
+        }
+        .collapsible.white-belt{
+            background-color: white;
+            position:relative;
+            color: black;
+        }
+        .collapsible.blue-belt{
+            background-color: blue;
+            position:relative;
+        }
+        .collapsible.purple-belt{
+            background-color: purple;
+            position:relative;
+        }
+        .collapsible.brown-belt{
+            background-color: brown;
+            position:relative;
+        }
+        .collapsible.black-belt{
+            background-color: black;
+            position:relative;
+        }
+        .collapsible.blue-belt::before,
+        .collapsible.purple-belt::before,
+        .collapsible.brown-belt::before,
+        .collapsible.white-belt::before{
+            content: "";
+            position: absolute; 
+            left: 80%; 
+            top: 0px;
+            width: 15%; 
+            height: 100%;
+            background-color: black;
+        }
+        .collapsible.black-belt::before{
+            content: "";
+            position: absolute; 
+            left: 80%; 
+            top: 0px;
+            width: 15%; 
+            height: 100%;
+            background-color: red;
+        }
+        .content {
+            padding: 0 18px;
+            display: none;
+            overflow: hidden;
+            background-color: #f4f4f4;
+            margin-bottom: 10px;
+        }
+        .degree {
+            padding-left: 1rem;
+        }
+        .degree a {
+            display: block;
+            padding: 8px 0;
+            color: #333;
+            text-decoration: none;
+        }
+    </style>
+    <script>
+        // Function to switch languages and save the preference
+        function switchLanguage(lang) {
+            const elements = document.querySelectorAll("[data-lang-en]");
+            elements.forEach(element => {
+                element.innerHTML = element.getAttribute(`data-lang-${lang}`);
+            });
+            // Save the selected language in localStorage
+            localStorage.setItem('selectedLanguage', lang);
+        }
+
+        // Apply the saved language on page load
+        document.addEventListener("DOMContentLoaded", function() {
+            const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
+            document.querySelector(".language-switch select").value = savedLanguage;
+            switchLanguage(savedLanguage);
+        });
+
+        // JavaScript to handle the collapsible sections
+        document.addEventListener("DOMContentLoaded", function() {
+            const collapsibles = document.querySelectorAll(".collapsible");
+            collapsibles.forEach(collapsible => {
+                collapsible.addEventListener("click", function() {
+                    this.classList.toggle("active");
+                    const content = this.nextElementSibling;
+                    if (content.style.display === "block") {
+                        content.style.display = "none";
+                    } else {
+                        content.style.display = "block";
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Antisocial Brazilian JiuJitsu</h1>
+        <nav>
+            <ul>
+                <li><a href="index.php" data-lang-en="Home" data-lang-pt="Início">Home</a></li>
+                <li><a href="student-handbook.php" data-lang-en="Student Handbook" data-lang-pt="Apostila do Aluno">Student Handbook</a></li>
+                <li><a href="#" data-lang-en="Techniques" data-lang-pt="Técnicas">Techniques</a></li>
+                <li><a href="#" data-lang-en="About" data-lang-pt="Sobre">About</a></li>
+                <li><a href="#" data-lang-en="Contact" data-lang-pt="Contato">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="language-switch">
+            <select onchange="switchLanguage(this.value)">
+                <option value="en">English</option>
+                <option value="pt">Português</option>
+            </select>
+        </div>
+    </header>
+    <main>
+        <h2 data-lang-en="Student Handbook" data-lang-pt="Apostila do Aluno">Student Handbook</h2>
+        <p data-lang-en="Select the exam" data-lang-pt="Selecione o exame">Select the exam</p>
+
+        <button class="collapsible white-belt" data-lang-en="White Belt" data-lang-pt="Faixa Branca">White Belt</button>
+        <div class="content">
+            <div class="degree">
+                <a href="white-belt-1.php" data-lang-en="1st Degree" data-lang-pt="1º Grau">1st Degree</a>
+                <a href="white-belt-2.html" data-lang-en="2nd Degree" data-lang-pt="2º Grau">2nd Degree</a>
+                <a href="white-belt-3.html" data-lang-en="3rd Degree" data-lang-pt="3º Grau">3rd Degree</a>
+                <a href="white-belt-4.html" data-lang-en="4th Degree" data-lang-pt="4º Grau">4th Degree</a>
+            </div>
+        </div>
+
+        <button class="collapsible blue-belt" data-lang-en="Blue Belt" data-lang-pt="Faixa Azul">Blue Belt</button>
+        <div class="content">
+            <div class="degree">
+                <a href="blue-belt.html" data-lang-en="Blue Belt" data-lang-pt="Faixa Azul">Blue Belt</a>
+                <a href="blue-belt-1.html" data-lang-en="1st Degree" data-lang-pt="1º Grau">1st Degree</a>
+                <a href="blue-belt-2.html" data-lang-en="2nd Degree" data-lang-pt="2º Grau">2nd Degree</a>
+                <a href="blue-belt-3.html" data-lang-en="3rd Degree" data-lang-pt="3º Grau">3rd Degree</a>
+                <a href="blue-belt-4.html" data-lang-en="4th Degree" data-lang-pt="4º Grau">4th Degree</a>
+            </div>
+        </div>
+
+        <button class="collapsible purple-belt" data-lang-en="Purple Belt" data-lang-pt="Faixa Roxa">Purple Belt</button>
+        <div class="content">
+            <div class="degree">
+                <a href="purple-belt.html" data-lang-en="Purple Belt" data-lang-pt="Faixa Roxa">Purple Belt</a>
+                <a href="purple-belt-1.html" data-lang-en="1st Degree" data-lang-pt="1º Grau">1st Degree</a>
+                <a href="purple-belt-2.html" data-lang-en="2nd Degree" data-lang-pt="2º Grau">2nd Degree</a>
+                <a href="purple-belt-3.html" data-lang-en="3rd Degree" data-lang-pt="3º Grau">3rd Degree</a>
+                <a href="purple-belt-4.html" data-lang-en="4th Degree" data-lang-pt="4º Grau">4th Degree</a>
+            </div>
+        </div>
+
+        <button class="collapsible brown-belt" data-lang-en="Brown Belt" data-lang-pt="Faixa Marrom">Brown Belt</button>
+        <div class="content">
+            <div class="degree">
+                <a href="brown-belt.html" data-lang-en="Brown Belt" data-lang-pt="Faixa Marrom">Brown Belt</a>
+                <a href="brown-belt-1.html" data-lang-en="1st Degree" data-lang-pt="1º Grau">1st Degree</a>
+                <a href="brown-belt-2.html" data-lang-en="2nd Degree" data-lang-pt="2º Grau">2nd Degree</a>
+                <a href="brown-belt-3.html" data-lang-en="3rd Degree" data-lang-pt="3º Grau">3rd Degree</a>
+                <a href="brown-belt-4.html" data-lang-en="4th Degree" data-lang-pt="4º Grau">4th Degree</a>
+            </div>
+        </div>
+
+        <button class="collapsible black-belt" data-lang-en="Black Belt" data-lang-pt="Faixa Preta">Black Belt</button>
+        <div class="content">
+            <div class="degree">
+                <a href="black-belt.html" data-lang-en="Black Belt" data-lang-pt="Faixa Preta">Black Belt</a>
+                <a href="black-belt-1.html" data-lang-en="1st Degree" data-lang-pt="1º Grau">1st Degree</a>
+                <a href="black-belt-2.html" data-lang-en="2nd Degree" data-lang-pt="2º Grau">2nd Degree</a>
+                <a href="black-belt-3.html" data-lang-en="3rd Degree" data-lang-pt="3º Grau">3rd Degree</a>
+                <a href="black-belt-4.html" data-lang-en="4th Degree" data-lang-pt="4º Grau">4th Degree</a>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; Antisocial Brazilian JiuJitsu</p>
+    </footer>
+</body>
+</html>
