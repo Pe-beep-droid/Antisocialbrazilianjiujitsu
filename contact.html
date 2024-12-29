@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antisocial Brazilian JiuJitsu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+            position: relative;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: inline-block;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+        main {
+            padding: 2rem;
+            background-color: #fff;
+            margin: 2rem auto;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .language-switch {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+        }
+    </style>
+    <script>
+        // Function to switch languages
+        function switchLanguage(lang) {
+            const elements = document.querySelectorAll("[data-lang-en]");
+            elements.forEach(element => {
+                element.innerHTML = element.getAttribute(`data-lang-${lang}`);
+            });
+            // Save the selected language in local storage
+            localStorage.setItem('selectedLanguage', lang);
+        }
+
+        // Apply the saved language on page load
+        window.onload = function() {
+            const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
+            document.querySelector(".language-switch select").value = savedLanguage;
+            switchLanguage(savedLanguage);
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Antisocial Brazilian JiuJitsu</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html" data-lang-en="Home" data-lang-pt="Início">Home</a></li>
+                <li><a href="student-handbook.html" data-lang-en="Student Handbook" data-lang-pt="Apostila do Aluno">Student Handbook</a></li>
+                <li><a href="#" data-lang-en="Techniques" data-lang-pt="Técnicas">Techniques</a></li>
+                <li><a href="#" data-lang-en="About" data-lang-pt="Sobre">About</a></li>
+                <li><a href="#" data-lang-en="Contact" data-lang-pt="Contato">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="language-switch">
+            <select onchange="switchLanguage(this.value)">
+                <option value="en">English</option>
+                <option value="pt">Português</option>
+            </select>
+        </div>
+    </header>
+    <main>
+        <h2 data-lang-en="Contact Us" data-lang-pt="Contactos">Contact Us</h2>
+        <p>Email | <a href="mailto:Antisocialbrazilianjiujitsu@gmail.com.br">Antisocialbrazilianjiujitsu@gmail.com.br</a></p>
+        <p>Youtube | <a href="https://www.youtube.com/@antisocialbrazilianjiujitsu" target="_blank">https://www.youtube.com/@antisocialbrazilianjiujitsu</a></p> 
+        <p>Instagram | <a href="https://www.instagram.com/antisocialbrazilianjiujitsu/" target="_blank">https://www.instagram.com/antisocialbrazilianjiujitsu/</a></p>
+        
+        <h3 data-lang-en="Location" data-lang-pt="Localização">Location</h3>
+        <div style="width: 100%; margin-bottom: 2rem;">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d438.0451883236486!2d-8.488571271300302!3d40.90439121129873!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd2381e13fcdfc8b%3A0x1dd35f2b78e89d2d!2sR.%20Columbano%2098%2C%20S%C3%A3o%20Jo%C3%A3o%20da%20Madeira!5e1!3m2!1sen!2spt!4v1735469374303!5m2!1sen!2spt"
+                width="600"
+                height="450"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; Antisocial Brazilian JiuJitsu</p>
+    </footer>
+</body>
+</html>
